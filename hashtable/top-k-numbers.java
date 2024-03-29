@@ -20,20 +20,21 @@ class Solution {
         List<Integer> ans = new ArrayList<>();
         Map<Integer, Integer> freq = new HashMap<>();
         int[] top = new int[k+1];
-        int j;
+        int j, top_j, top_j_1;
         for(int i=0; i<n; i++){
             freq.put(arr[i], freq.getOrDefault(arr[i], 0) + 1);
             top[k] = arr[i];
             j = find(top, arr[i])-1;
+
             while(j >= 0) {
-                if(
-                    freq.getOrDefault(top[j],0) < freq.getOrDefault(top[j+1],0) || 
-                    (freq.getOrDefault(top[j],0) == freq.getOrDefault(top[j+1],0) && top[j] > top[j+1])
-                ){
+                top_j = freq.getOrDefault(top[j],0);
+                top_j_1 = freq.getOrDefault(top[j+1],0);
+                if(top_j < top_j_1 || (top_j == top_j_1 && top[j] > top[j+1])){
                     int tmp = top[j];
                     top[j] = top[j+1];
                     top[j+1] = tmp;
-                } else break;
+                } else 
+                    break;
                 j--;
             }
             for(int l=0; l<k && top[l]!=0; l++) ans.add(top[l]);

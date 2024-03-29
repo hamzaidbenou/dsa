@@ -1,5 +1,3 @@
-package dp;
-
 class Solution {
 
     /**
