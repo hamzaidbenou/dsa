@@ -1,3 +1,5 @@
+package hashtable_sliding_window;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
